@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dchellen <dchellen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:02:19 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/24 19:32:59 by david            ###   ########.fr       */
+/*   Updated: 2025/01/26 13:20:05 by dchellen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-// #include "mlx_mac/mlx.h"
-# include "mlx_linux/mlx.h"
+#include "mlx_mac/mlx.h"
+// # include "mlx_linux/mlx.h"
 # include "libft/libft.h"
 # include <stdio.h>
 # include <unistd.h>
@@ -77,7 +77,8 @@ int		init_img(t_game *game);
 int		creat_map(t_game *game);
 void	maploop(t_game *game);
 
-int		key_press(int keycode, t_game *game);
+int		key_press_mac(int keycode, t_game *game);
+// int		key_press_linux(int keycode, t_game *game);
 int		close_window(t_game *game);
 int		move_up(t_game *game, int px, int py);
 int		move_left(t_game *game, int dx, int dy);

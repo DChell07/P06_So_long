@@ -3,26 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dchellen <dchellen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:58:29 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/24 20:02:30 by david            ###   ########.fr       */
+/*   Updated: 2025/01/26 13:21:51 by dchellen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	key_press(int keycode, t_game *game)
+// int	key_press_linux(int keycode, t_game *game)
+// {
+// 	if (keycode == 65307)
+// 		mlx_free(game);
+// 	if (keycode == 119 && move_up(game, 0, -1) == 1)
+// 		mlx_free(game);
+// 	if (keycode == 97 && move_left(game, -1, 0) == 1)
+// 		mlx_free(game);
+// 	if (keycode == 115 && move_down(game, 0, 1) == 1)
+// 		mlx_free(game);
+// 	if (keycode == 100 && move_right(game, 1, 0) == 1)
+// 		mlx_free(game);
+// 	return (0);
+// }
+
+int	key_press_mac(int keycode, t_game *game)
 {
-	if (keycode == 65307)
+	if (keycode == 53)
 		mlx_free(game);
-	if (keycode == 119 && move_up(game, 0, -1) == 1)
+	if (keycode == 13 && move_up(game, 0, -1) == 1)
 		mlx_free(game);
-	if (keycode == 97 && move_left(game, -1, 0) == 1)
+	if (keycode == 0 && move_left(game, -1, 0) == 1)
 		mlx_free(game);
-	if (keycode == 115 && move_down(game, 0, 1) == 1)
+	if (keycode == 1 && move_down(game, 0, 1) == 1)
 		mlx_free(game);
-	if (keycode == 100 && move_right(game, 1, 0) == 1)
+	if (keycode == 2 && move_right(game, 1, 0) == 1)
 		mlx_free(game);
 	return (0);
 }
@@ -36,7 +51,7 @@ int	close_window(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->img.exit);
 	mlx_destroy_image(game->mlx_ptr, game->img.item);
 	mlx_destroy_window(game->mlx_ptr, game->mlx_win);
-	mlx_destroy_display(game->mlx_ptr);
+	// mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
 	free_map_data(game->map.data);
 	exit(0);
@@ -51,7 +66,7 @@ void	mlx_free(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->img.exit);
 	mlx_destroy_image(game->mlx_ptr, game->img.item);
 	mlx_destroy_window(game->mlx_ptr, game->mlx_win);
-	mlx_destroy_display(game->mlx_ptr);
+	// mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
 	free_map_data(game->map.data);
 	exit(0);

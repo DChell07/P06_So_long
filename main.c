@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dchellen <dchellen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:58:28 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/24 20:02:21 by david            ###   ########.fr       */
+/*   Updated: 2025/01/26 19:08:47 by dchellen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ int	main(int ac, char *av[])
 	if (check_error(&game) == 1)
 	{
 		free_map_data(game.map.data);
-		mlx_destroy_display(game.mlx_ptr);
+		// mlx_destroy_display(game.mlx_ptr);
 		free(game.mlx_ptr);
 		return (0);
 	}
 	init_img(&game);
 	creat_map(&game);
-	mlx_key_hook(game.mlx_win, key_press, &game);
+	mlx_key_hook(game.mlx_win, key_press_mac, &game);
 	mlx_hook(game.mlx_win, 17, 0, close_window, &game);
 	mlx_loop(game.mlx_ptr);
 	return (0);
