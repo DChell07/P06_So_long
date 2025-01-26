@@ -75,6 +75,7 @@ int		count_items(t_game *game, char c);
 void	dfs(t_game *game, char **map_copy, int x, int y);
 int		init_img(t_game *game);
 int		creat_map(t_game *game);
+void	maploop(t_game *game);
 
 int		key_press(int keycode, t_game *game);
 int		close_window(t_game *game);
@@ -84,7 +85,8 @@ int		move_down(t_game *game, int dx, int dy);
 int		move_right(t_game *game, int dx, int dy);
 
 void	print_moves(t_game *game);
-int		print_win(void);
+int		print_win(t_game *game, int new_x, int new_y);
+int		conditions(t_game *game, int new_x, int new_y);
 void	free_map_data(char **map_data);
 void	mlx_free(t_game *game);
 

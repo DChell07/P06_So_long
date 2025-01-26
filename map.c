@@ -46,14 +46,20 @@ int	init_img(t_game *game)
 	widht = IMG;
 	height = IMG;
 	game->moves_nb = 0;
-	game->mlx_win = mlx_new_window(game->mlx_ptr, game->map.width, game->map.height, "EKIP");
+	game->mlx_win = mlx_new_window(game->mlx_ptr, game->map.width,
+			game->map.height, "EKIP");
 	if (game->mlx_win == NULL)
 		return (1);
-	game->img.back = mlx_xpm_file_to_image(game->mlx_ptr, "asset/fond.xpm", &widht, &height);
-	game->img.wall = mlx_xpm_file_to_image(game->mlx_ptr, "asset/mur.xpm", &widht, &height);
-	game->player.player = mlx_xpm_file_to_image(game->mlx_ptr, "asset/player.xpm", &widht, &height);
-	game->img.exit = mlx_xpm_file_to_image(game->mlx_ptr, "asset/exit.xpm", &widht, &height);
-	game->img.item = mlx_xpm_file_to_image(game->mlx_ptr, "asset/item.xpm", &widht, &height);
+	game->img.back = mlx_xpm_file_to_image(game->mlx_ptr,
+			"asset/fond.xpm", &widht, &height);
+	game->img.wall = mlx_xpm_file_to_image(game->mlx_ptr,
+			"asset/mur.xpm", &widht, &height);
+	game->player.player = mlx_xpm_file_to_image(game->mlx_ptr,
+			"asset/player.xpm", &widht, &height);
+	game->img.exit = mlx_xpm_file_to_image(game->mlx_ptr,
+			"asset/exit.xpm", &widht, &height);
+	game->img.item = mlx_xpm_file_to_image(game->mlx_ptr,
+			"asset/item.xpm", &widht, &height);
 	return (0);
 }
 
@@ -63,24 +69,7 @@ int	creat_map(t_game *game)
 	while (game->map.y < game->map.height / IMG)
 	{
 		game->map.x = 0;
-		while (game->map.x < game->map.width / IMG)
-		{
-			mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, game->img.back, game->map.x * IMG, game->map.y * IMG);
-			if (game->map.data[game->map.y][game->map.x] == '1')
-				mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, game->img.wall, game->map.x * IMG, game->map.y * IMG);
-			else if (game->map.data[game->map.y][game->map.x] == '0')
-				mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, game->img.back, game->map.x * IMG, game->map.y * IMG);
-			else if (game->map.data[game->map.y][game->map.x] == 'P')
-				mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, game->player.player, game->map.x * IMG, game->map.y * IMG);
-			else if (game->map.data[game->map.y][game->map.x] == 'E')
-				mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, game->img.exit, game->map.x * IMG, game->map.y * IMG);
-			else if (game->map.data[game->map.y][game->map.x] == 'I')
-			{
-				mlx_put_image_to_window(game->mlx_ptr, game->mlx_win, game->img.item, game->map.x * IMG, game->map.y * IMG);
-				game->map.items_nb++;
-			}
-			game->map.x++;
-		}
+		maploop(game);
 		game->map.y++;
 	}
 	return (0);

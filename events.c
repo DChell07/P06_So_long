@@ -24,7 +24,6 @@ int	key_press(int keycode, t_game *game)
 		mlx_free(game);
 	if (keycode == 100 && move_right(game, 1, 0) == 1)
 		mlx_free(game);
-	print_moves(game);
 	return (0);
 }
 
@@ -73,11 +72,4 @@ void	free_map_data(char **map_data)
 	}
 	free(map_data);
 	map_data = NULL;
-}
-
-void	print_moves(t_game *game)
-{
-	game->moves_nb++;
-	printf("moves numbers %d\n", game->moves_nb);
-	return ;
 }

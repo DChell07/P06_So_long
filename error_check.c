@@ -59,7 +59,6 @@ int	check_map_accessibility(t_game *game)
 	char	**map_copy;
 
 	i = 0;
-	game->map.items_nb = 0;
 	map_copy = malloc((game->map.height + 1) * sizeof(char *));
 	if (map_copy == NULL)
 		return (0);
@@ -76,9 +75,7 @@ int	check_map_accessibility(t_game *game)
 	game->exit = false;
 	dfs(game, map_copy, start_x, start_y);
 	free_map_data(map_copy);
-	if (game->items_take != game->map.items_nb)
-		return (1);
-	if (game->exit == false)
+	if (game->items_take != game->map.items_nb || game->exit == false)
 		return (1);
 	return (0);
 }
