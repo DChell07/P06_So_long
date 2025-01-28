@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:18:36 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/24 20:01:10 by david            ###   ########.fr       */
+/*   Updated: 2025/01/29 00:42:18 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,48 @@
 
 int	check_error(t_game *game)
 {
-	if (check_map_accessibility(game) == 1)
+	if (check_map_wall(game) == 1)
 	{
-		printf("Inaccessibilité dans la map\n");
+		printf ("Wall Error in map\n");
 		return (1);
 	}
-	if (count_items(game, 'I') < 1 || count_items(game, 'E') != 1
-		|| count_items(game, 'P') != 1)
+	if (count_items(game, 'C') < 1 || count_items(game, 'E') != 1
+		|| count_items(game, 'P') != 1 || count_items(game, '0') < 1
+		|| check_letters(game) == 1)
 	{
-		printf("le nombres d'items est incorrect\n");
+		printf("Incorrect map letters..\n");
+		return (1);
+	}
+	if (check_map_accessibility(game) == 1)
+	{
+		printf("Inaccessibily in map..\n");
 		return (1);
 	}
 	if (check_map_size(game) == 1)
 	{
-		printf("La taille de la map n'est pas correct\n");
+		printf("Incorrect size or no wall map..\n");
 		return (1);
 	}
 	printf("Map Valide\n");
 	return (0);
 }
 
-void	dfs(t_game *game, char **map_copy, int x, int y)
+void	flood_fill(t_game *game, char **map_copy, int x, int y)
 {
 	if (map_copy[y][x] == '1' || map_copy[y][x] == 'V')
 		return ;
-	if (map_copy[y][x] == 'I')
+	if (map_copy[y][x] == 'C')
 		game->items_take++;
-	else if (game->items_take != game->map.items_nb && map_copy[y][x] == 'E')
-		return ;
 	else if (map_copy[y][x] == 'E')
+	{
 		game->exit = true;
+		return ;
+	}
 	map_copy[y][x] = 'V';
-	dfs(game, map_copy, x + 1, y);
-	dfs(game, map_copy, x - 1, y);
-	dfs(game, map_copy, x, y + 1);
-	dfs(game, map_copy, x, y - 1);
+	flood_fill(game, map_copy, x + 1, y);
+	flood_fill(game, map_copy, x - 1, y);
+	flood_fill(game, map_copy, x, y + 1);
+	flood_fill(game, map_copy, x, y - 1);
 }
 
 int	check_map_accessibility(t_game *game)
@@ -69,11 +76,11 @@ int	check_map_accessibility(t_game *game)
 	}
 	map_copy[i] = NULL;
 	find_player_position(game);
-	game->map.items_nb = count_items(game, 'I');
+	game->map.items_nb = count_items(game, 'C');
 	start_x = game->player.px;
 	start_y = game->player.py;
 	game->exit = false;
-	dfs(game, map_copy, start_x, start_y);
+	flood_fill(game, map_copy, start_x, start_y);
 	free_map_data(map_copy);
 	if (game->items_take != game->map.items_nb || game->exit == false)
 		return (1);
@@ -87,7 +94,7 @@ int	check_file(char *s1)
 	size_s1 = ft_strlen(s1);
 	if (size_s1 < 4)
 	{
-		printf("invalide file sorry\n");
+		printf("invalide file\n");
 		return (1);
 	}
 	if (ft_strncmp(s1 + size_s1 - 4, ".ber", 4) != 0)
@@ -112,6 +119,7 @@ int	check_map_size(t_game *game)
 			return (1);
 		game->map.x++;
 	}
+	game->en_c = count_items(game, 'X');
 	game->map.width *= IMG;
 	game->map.height *= IMG;
 	game->map.items_nb = 0;

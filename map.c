@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:14:16 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/24 20:00:43 by david            ###   ########.fr       */
+/*   Updated: 2025/01/28 22:01:07 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	init_img(t_game *game)
 			"asset/exit.xpm", &widht, &height);
 	game->img.item = mlx_xpm_file_to_image(game->mlx_ptr,
 			"asset/item.xpm", &widht, &height);
+	init_enemies(game);
 	return (0);
 }
 
