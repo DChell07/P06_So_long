@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 20:00:26 by david             #+#    #+#             */
-/*   Updated: 2025/01/29 00:46:33 by david            ###   ########.fr       */
+/*   Updated: 2025/01/29 11:44:02 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	error_arg(int arg)
 {
 	if (arg != 2)
 	{
-		printf("Error ARG, please write a map\n");
+		ft_printf("Error ARG, please write a map\n");
 		return (1);
 	}
 	return (0);
@@ -78,6 +78,6 @@ int	error_arg(int arg)
 void	print_moves(t_game *game)
 {
 	game->moves_nb++;
-	printf("moves numbers %d\n", game->moves_nb);
+	ft_printf("moves numbers %d\n", game->moves_nb);
 	return ;
 }

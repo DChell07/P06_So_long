@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:58:29 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/28 20:14:22 by david            ###   ########.fr       */
+/*   Updated: 2025/01/29 11:02:51 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	key_press_linux(int keycode, t_game *game)
 
 int	close_window(t_game *game)
 {
-	printf("Fenetre quittée...\n");
+	ft_printf("Fenetre quittée...\n");
 	mlx_destroy_image(game->mlx_ptr, game->player.player);
 	mlx_destroy_image(game->mlx_ptr, game->img.back);
 	mlx_destroy_image(game->mlx_ptr, game->img.wall);

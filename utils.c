@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:14:16 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/29 00:53:19 by david            ###   ########.fr       */
+/*   Updated: 2025/01/29 11:08:37 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	print_win(t_game *game, int new_x, int new_y)
 	if (game->map.data[new_y][new_x] == 'E'
 			&& game->items_take == game->map.items_nb)
 	{
-		printf("YOU WIN!\n");
+		ft_printf("YOU WIN!\n");
 		return (1);
 	}
 	return (0);

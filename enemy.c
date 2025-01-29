@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:23:38 by david             #+#    #+#             */
-/*   Updated: 2025/01/28 20:12:44 by david            ###   ########.fr       */
+/*   Updated: 2025/01/29 11:01:45 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	kill_collision(t_game *game)
 		if (game->player.px == game->enemy[i].x
 			&& game->player.py == game->enemy[i].y)
 		{
-			printf("Vous avez été tué !");
+			ft_printf("Vous avez été tué !");
 			mlx_free(game);
 			return (1);
 		}

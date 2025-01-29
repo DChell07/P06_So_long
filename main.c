@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:58:28 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/29 00:42:32 by david            ###   ########.fr       */
+/*   Updated: 2025/01/29 11:44:50 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	main(int ac, char *av[])
 	if (check_file(av[1]) == 1)
 		return (0);
 	game.mlx_ptr = mlx_init();
-	read_map_file(av[1], &game);
+	if (read_map_file(av[1], &game) == 1)
+		return (0);
 	if (check_error(&game) == 1)
 	{
 		free_map_data(game.map.data);

@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:14:16 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/28 22:01:07 by david            ###   ########.fr       */
+/*   Updated: 2025/01/29 11:19:52 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int	read_map_file(char *av, t_game *game)
 
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
+	{
+		ft_printf("Invalid Map\n");
 		return (1);
+	}
 	bytes_read = read(fd, buf, BUFFER_SIZE);
 	close(fd);
 	buf[bytes_read] = '\0';
