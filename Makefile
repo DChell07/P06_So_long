@@ -6,17 +6,18 @@
 #    By: david <david@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 11:27:47 by david             #+#    #+#              #
-#    Updated: 2025/01/29 00:38:40 by david            ###   ########.fr        #
+#    Updated: 2025/01/30 19:22:11 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# Makefile du Linux
 
 NAME = so_long
 
 CC = cc
 
-SRCS        =   enemy.c \
+SRCS        =   gnl/get_next_line.c \
+				gnl/get_next_line_utils.c \
+				read_map.c \
+				enemy.c \
 				error_check_2.c \
 				error_check.c \
 				events.c \
@@ -34,7 +35,7 @@ MLX_LIB = $(MLX_PATH)libmlx_Linux.a
 
 MLX_FLAGS = -Lmlx -L/usr/lib/X11 -lXext -lX11
 
-LIBFT_PATH = ft_printf/
+LIBFT_PATH = ftt_printf/
 
 LIBFT_LIB = $(LIBFT_PATH)libftprintf.a
 

@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:18:36 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/29 11:43:58 by david            ###   ########.fr       */
+/*   Updated: 2025/01/30 23:22:03 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 int	check_error(t_game *game)
 {
+	if (check_map_size(game) == 1)
+	{
+		ft_printf("Incorrect size\n");
+		return (1);
+	}
 	if (check_map_wall(game) == 1)
 	{
-		ft_printf ("Wall Error in map\n");
-		return (1);
+		printf("no wall map..\n");
+		return (1);	
 	}
 	if (count_items(game, 'C') < 1 || count_items(game, 'E') != 1
 		|| count_items(game, 'P') != 1 || count_items(game, '0') < 1
@@ -31,11 +36,8 @@ int	check_error(t_game *game)
 		ft_printf("Inaccessibily in map..\n");
 		return (1);
 	}
-	if (check_map_size(game) == 1)
-	{
-		ft_printf("Incorrect size or no wall map..\n");
-		return (1);
-	}
+	game->map.width *= IMG;
+	game->map.height *= IMG;
 	ft_printf("Map Valide\n");
 	return (0);
 }
@@ -112,18 +114,19 @@ int	check_map_size(t_game *game)
 	game->map.x = 0;
 	game->map.y = 0;
 	size = ft_strlen(game->map.data[game->map.x]);
+	if (game->map.data[game->map.x][size - 1] == '\n')
+		size--;
 	game->map.x++;
 	while (game->map.data[game->map.x] != NULL)
 	{
-		if (ft_strlen(game->map.data[game->map.x]) != size)
+		size_t current_size = ft_strlen(game->map.data[game->map.x]);
+		if (game->map.data[game->map.x][current_size - 1] == '\n')
+			current_size--;
+		if (current_size != size)
 			return (1);
 		game->map.x++;
 	}
 	game->en_c = count_items(game, 'X');
-	game->map.width *= IMG;
-	game->map.height *= IMG;
-	if (game->map.height > 1140)
-		return (1);
 	game->map.items_nb = 0;
 	game->items_take = 0;
 	return (0);

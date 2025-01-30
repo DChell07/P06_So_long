@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:58:29 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/29 11:02:51 by david            ###   ########.fr       */
+/*   Updated: 2025/01/30 20:35:33 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	key_press_linux(int keycode, t_game *game)
 {
+	printf("%d\n", keycode);
 	if (keycode == 65307)
 		mlx_free(game);
 	if (keycode == 119 && move_up(game, 0, -1) == 1)
@@ -26,21 +27,6 @@ int	key_press_linux(int keycode, t_game *game)
 		mlx_free(game);
 	return (0);
 }
-
-// int	key_press_mac(int keycode, t_game *game)
-// {
-// 	if (keycode == 53)
-// 		mlx_free(game);
-// 	if (keycode == 13 && move_up(game, 0, -1) == 1)
-// 		mlx_free(game);
-// 	if (keycode == 0 && move_left(game, -1, 0) == 1)
-// 		mlx_free(game);
-// 	if (keycode == 1 && move_down(game, 0, 1) == 1)
-// 		mlx_free(game);
-// 	if (keycode == 2 && move_right(game, 1, 0) == 1)
-// 		mlx_free(game);
-// 	return (0);
-// }
 
 int	close_window(t_game *game)
 {

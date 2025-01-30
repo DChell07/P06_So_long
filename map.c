@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:14:16 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/29 11:19:52 by david            ###   ########.fr       */
+/*   Updated: 2025/01/30 23:18:24 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,27 @@
 int	read_map_file(char *av, t_game *game)
 {
 	int		fd;
-	char	buf[BUFFER_SIZE + 1];
-	ssize_t	bytes_read;
+	int		count;
 	int		i;
+	char	**map;
 
+	count = count_line(av);
+	i = 0;
+	map = (char **)malloc(sizeof(char*) * (count + 1));
+	if (map == NULL)
+		return (1);
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf("Invalid Map\n");
+		ft_printf("Error file\n");
 		return (1);
 	}
-	bytes_read = read(fd, buf, BUFFER_SIZE);
-	close(fd);
-	buf[bytes_read] = '\0';
-	i = 0;
-	while (buf[i] != '\0')
-	{
-		if (buf[i] == '\n')
-			game->map.height++;
-		else if (game->map.height == 0)
-			game->map.width++;
+	while ((map[i] = get_next_line(fd)) != NULL)
 		i++;
-	}
-	game->map.data = ft_split(buf, '\n');
+	close(fd);
+	game->map.data = map;
+	give_map_data(map, game);
+	print_map(map);
 	return (0);
 }
 
@@ -50,7 +48,7 @@ int	init_img(t_game *game)
 	height = IMG;
 	game->moves_nb = 0;
 	game->mlx_win = mlx_new_window(game->mlx_ptr, game->map.width,
-			game->map.height, "EKIP");
+			game->map.height, "Dokkan Battle");
 	if (game->mlx_win == NULL)
 		return (1);
 	game->img.back = mlx_xpm_file_to_image(game->mlx_ptr,

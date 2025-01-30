@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 20:00:26 by david             #+#    #+#             */
-/*   Updated: 2025/01/29 11:44:02 by david            ###   ########.fr       */
+/*   Updated: 2025/01/30 23:09:01 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,29 @@ int	check_map_wall(t_game *game)
 	int	y;
 
 	x = 0;
-	while (game->map.data[0][x] != '\0')
-		if (game->map.data[0][x++] != '1')
+	while (game->map.data[0][x] != '\0' && game->map.data[0][x] != '\n')
+	{
+		if (game->map.data[0][x] != '1')
 			return (1);
+		x++;
+	}
 	y = 1;
 	while (y < game->map.height - 1)
 	{
-		if (game->map.data[y][0] != '1' ||
-			game->map.data[y][game->map.width - 1] != '1')
+		if (game->map.data[y][0] != '1' || game->map.data[y][game->map.width - 1] != '1')
 			return (1);
 		y++;
 	}
 	x = 0;
-	y = game->map.height - 1;
-	while (game->map.data[y][x] != '\0')
+	while (game->map.data[game->map.height - 1][x] != '\0' && game->map.data[game->map.height - 1][x] != '\n')
 	{
-		if (game->map.data[y][x] != '1')
+		if (game->map.data[game->map.height - 1][x] != '1')
 			return (1);
 		x++;
 	}
 	return (0);
 }
+
 
 int	check_letters(t_game *game)
 {
@@ -49,7 +51,7 @@ int	check_letters(t_game *game)
 	while (game->map.data[y] != NULL)
 	{
 		x = 0;
-		while (game->map.data[y][x] != '\0')
+		while (game->map.data[y][x] != '\0' && game->map.data[y][x] != '\n')
 		{
 			if (game->map.data[y][x] != '1'
 				&& game->map.data[y][x] != '0'

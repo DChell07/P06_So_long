@@ -6,23 +6,22 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:02:19 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/29 11:33:00 by david            ###   ########.fr       */
+/*   Updated: 2025/01/30 23:22:02 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-// #include "mlx_mac/mlx.h"
 # include "mlx_linux/mlx.h"
-# include "ft_printf/ft_printf.h"
+# include "ftt_printf/ft_printf.h"
+# include "gnl/get_next_line.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdbool.h>
 
-# define BUFFER_SIZE 1024
 # define IMG 64
 # define KILL -1
 
@@ -84,6 +83,9 @@ typedef struct s_game
 
 int		error_arg(int arg);
 int		read_map_file(char *av, t_game *game);
+void	print_map(char **map);
+void 	give_map_data(char **map, t_game *game);
+int		count_line(char *av);
 
 int		check_file(char *s1);
 int		check_map_size(t_game *game);

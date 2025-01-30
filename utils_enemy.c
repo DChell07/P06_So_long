@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 22:48:12 by david             #+#    #+#             */
-/*   Updated: 2025/01/29 11:09:00 by david            ###   ########.fr       */
+/*   Updated: 2025/01/30 23:22:03 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ int	enemies_conditions_1(t_game *game, int i)
 	if (game->enemy[i].new_enemy_y < game->enemy[i].min_y
 		|| game->enemy[i].new_enemy_y >= game->enemy[i].max_y
 		|| game->map.data[game->enemy[i].new_enemy_y][game->enemy[i].x] == '1'
-		|| game->map.data[game->enemy[i].new_enemy_y][game->enemy[i].x] == 'C')
+		|| game->map.data[game->enemy[i].new_enemy_y][game->enemy[i].x] == 'C'
+		|| game->map.data[game->enemy[i].new_enemy_y][game->enemy[i].x] == 'E')
 		return (1);
 	return (0);
 }
@@ -97,7 +98,8 @@ int	enemies_conditions_2(t_game *game, int i)
 	if (game->enemy[i].new_enemy_x < game->enemy[i].min_x
 		|| game->enemy[i].new_enemy_x >= game->enemy[i].max_x
 		|| game->map.data[game->enemy[i].y][game->enemy[i].new_enemy_x] == '1'
-		|| game->map.data[game->enemy[i].y][game->enemy[i].new_enemy_x] == 'C')
+		|| game->map.data[game->enemy[i].y][game->enemy[i].new_enemy_x] == 'C'
+		|| game->map.data[game->enemy[i].y][game->enemy[i].new_enemy_x] == 'E')
 		return (1);
 	return (0);
 }
