@@ -5,12 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 12:41:23 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/30 21:15:32 by david            ###   ########.fr       */
+/*   Created: 2025/01/16 14:58:29 by dchellen          #+#    #+#             */
+/*   Updated: 2025/01/31 12:58:09 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	key_press_linux(int keycode, t_game *game)
+{
+	printf("%d\n", keycode);
+	if (keycode == 65307)
+		mlx_free(game);
+	if (keycode == 119 && move_up(game, 0, -1) == 1)
+		mlx_free(game);
+	if (keycode == 97 && move_left(game, -1, 0) == 1)
+		mlx_free(game);
+	if (keycode == 115 && move_down(game, 0, 1) == 1)
+		mlx_free(game);
+	if (keycode == 100 && move_right(game, 1, 0) == 1)
+		mlx_free(game);
+	return (0);
+}
 
 int	move_up(t_game *game, int dx, int dy)
 {

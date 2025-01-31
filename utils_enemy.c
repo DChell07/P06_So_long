@@ -6,11 +6,30 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 22:48:12 by david             #+#    #+#             */
-/*   Updated: 2025/01/30 23:22:03 by david            ###   ########.fr       */
+/*   Updated: 2025/01/31 12:43:04 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	init_enemies(t_game *game)
+{
+	int	widht;
+	int	height;
+	int	i;
+
+	widht = IMG;
+	height = IMG;
+	i = 0;
+	game->enemy = malloc(sizeof(t_enemy) * game->en_c);
+	while (i < game->en_c)
+	{
+		game->enemy[i].img = mlx_xpm_file_to_image(game->mlx_ptr,
+				"asset/enemy.xpm", &widht, &height);
+		i++;
+	}
+	return (0);
+}
 
 int	put_enemies(t_game *game)
 {
@@ -26,80 +45,38 @@ int	put_enemies(t_game *game)
 	return (0);
 }
 
-int	animate_enemy_1(t_game *game, int i)
+int	kill_collision(t_game *game)
 {
-	static int	frame_count_1 = 0;
+	int	i;
 
-	game->enemy[i].max_y = 100;
-	game->enemy[i].min_y = 0;
-	if (frame_count_1 % 15083 == 0)
+	i = 0;
+	while (i < game->en_c)
 	{
-		mlx_put_image_to_window(game->mlx_ptr, game->mlx_win,
-			game->img.back, game->enemy[i].x * IMG, game->enemy[i].y * IMG);
-		game->enemy[i].new_enemy_y = game->enemy[i].y + game->enemy[i].speed_y;
-		if (enemies_conditions_1(game, i) == 1)
-			game->enemy[i].speed_y *= -1;
-		else
+		if (game->player.px == game->enemy[i].x
+			&& game->player.py == game->enemy[i].y)
 		{
-			game->map.data[game->enemy[i].y][game->enemy[i].x] = '0';
-			game->enemy[i].y = game->enemy[i].new_enemy_y;
-			game->map.data[game->enemy[i].y][game->enemy[i].x] = 'X';
-			if (kill_collision(game) == 1)
-				exit (0);
+			ft_printf("Vous avez été tué !");
+			mlx_free(game);
+			return (1);
 		}
-		mlx_put_image_to_window(game->mlx_ptr, game->mlx_win,
-			game->enemy[i].img, game->enemy[i].x * IMG, game->enemy[i].y * IMG);
+		i++;
 	}
-	frame_count_1++;
 	return (0);
 }
 
-int	animate_enemy_2(t_game *game, int i)
+void	free_enemies(t_game *game)
 {
-	static int	frame_count_2 = 0;
+	int	i;
 
-	game->enemy[i].max_x = 100;
-	game->enemy[i].min_x = 0;
-	if (frame_count_2 % 15083 == 0)
+	if (game->enemy != 0)
 	{
-		mlx_put_image_to_window(game->mlx_ptr, game->mlx_win,
-			game->img.back, game->enemy[i].x * IMG, game->enemy[i].y * IMG);
-		game->enemy[i].new_enemy_x = game->enemy[i].x + game->enemy[i].speed_x;
-		if (enemies_conditions_2(game, i) == 1)
-			game->enemy[i].speed_x *= -1;
-		else
+		i = 0;
+		while (i < game->en_c)
 		{
-			game->map.data[game->enemy[i].y][game->enemy[i].x] = '0';
-			game->enemy[i].x = game->enemy[i].new_enemy_x;
-			game->map.data[game->enemy[i].y][game->enemy[i].x] = 'X';
-			if (kill_collision(game) == 1)
-				exit (0);
+			mlx_destroy_image(game->mlx_ptr, game->enemy[i].img);
+			i++;
 		}
-		mlx_put_image_to_window(game->mlx_ptr, game->mlx_win,
-			game->enemy[i].img, game->enemy[i].x * IMG, game->enemy[i].y * IMG);
+		free(game->enemy);
+		game->enemy = NULL;
 	}
-	frame_count_2++;
-	return (0);
-}
-
-int	enemies_conditions_1(t_game *game, int i)
-{
-	if (game->enemy[i].new_enemy_y < game->enemy[i].min_y
-		|| game->enemy[i].new_enemy_y >= game->enemy[i].max_y
-		|| game->map.data[game->enemy[i].new_enemy_y][game->enemy[i].x] == '1'
-		|| game->map.data[game->enemy[i].new_enemy_y][game->enemy[i].x] == 'C'
-		|| game->map.data[game->enemy[i].new_enemy_y][game->enemy[i].x] == 'E')
-		return (1);
-	return (0);
-}
-
-int	enemies_conditions_2(t_game *game, int i)
-{
-	if (game->enemy[i].new_enemy_x < game->enemy[i].min_x
-		|| game->enemy[i].new_enemy_x >= game->enemy[i].max_x
-		|| game->map.data[game->enemy[i].y][game->enemy[i].new_enemy_x] == '1'
-		|| game->map.data[game->enemy[i].y][game->enemy[i].new_enemy_x] == 'C'
-		|| game->map.data[game->enemy[i].y][game->enemy[i].new_enemy_x] == 'E')
-		return (1);
-	return (0);
 }

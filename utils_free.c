@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   utils_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 14:58:29 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/30 20:35:33 by david            ###   ########.fr       */
+/*   Created: 2025/01/13 14:14:16 by dchellen          #+#    #+#             */
+/*   Updated: 2025/01/31 12:30:11 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	key_press_linux(int keycode, t_game *game)
+void	mlx_free(t_game *game)
 {
-	printf("%d\n", keycode);
-	if (keycode == 65307)
-		mlx_free(game);
-	if (keycode == 119 && move_up(game, 0, -1) == 1)
-		mlx_free(game);
-	if (keycode == 97 && move_left(game, -1, 0) == 1)
-		mlx_free(game);
-	if (keycode == 115 && move_down(game, 0, 1) == 1)
-		mlx_free(game);
-	if (keycode == 100 && move_right(game, 1, 0) == 1)
-		mlx_free(game);
-	return (0);
+	mlx_destroy_image(game->mlx_ptr, game->player.player);
+	mlx_destroy_image(game->mlx_ptr, game->img.back);
+	mlx_destroy_image(game->mlx_ptr, game->img.wall);
+	mlx_destroy_image(game->mlx_ptr, game->img.exit);
+	mlx_destroy_image(game->mlx_ptr, game->img.item);
+	mlx_destroy_window(game->mlx_ptr, game->mlx_win);
+	free_enemies(game);
+	mlx_destroy_display(game->mlx_ptr);
+	free(game->mlx_ptr);
+	free_map_data(game->map.data);
+	exit(0);
+	return ;
 }
 
 int	close_window(t_game *game)
@@ -45,22 +45,6 @@ int	close_window(t_game *game)
 	return (0);
 }
 
-void	mlx_free(t_game *game)
-{
-	mlx_destroy_image(game->mlx_ptr, game->player.player);
-	mlx_destroy_image(game->mlx_ptr, game->img.back);
-	mlx_destroy_image(game->mlx_ptr, game->img.wall);
-	mlx_destroy_image(game->mlx_ptr, game->img.exit);
-	mlx_destroy_image(game->mlx_ptr, game->img.item);
-	mlx_destroy_window(game->mlx_ptr, game->mlx_win);
-	free_enemies(game);
-	mlx_destroy_display(game->mlx_ptr);
-	free(game->mlx_ptr);
-	free_map_data(game->map.data);
-	exit(0);
-	return ;
-}
-
 void	free_map_data(char **map_data)
 {
 	int	i;
@@ -77,19 +61,16 @@ void	free_map_data(char **map_data)
 	map_data = NULL;
 }
 
-void	free_enemies(t_game *game)
+void	print_map(char **map)
 {
-	int	i;
+	int	y;
 
-	if (game->enemy != 0)
+	y = 0;
+	while (map[y] != NULL)
 	{
-		i = 0;
-		while (i < game->en_c)
-		{
-			mlx_destroy_image(game->mlx_ptr, game->enemy[i].img);
-			i++;
-		}
-		free(game->enemy);
-		game->enemy = NULL;
+		ft_printf("%s", map[y]);
+		y++;
 	}
+	ft_printf("\n");
+	return ;
 }

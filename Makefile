@@ -6,7 +6,7 @@
 #    By: david <david@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 11:27:47 by david             #+#    #+#              #
-#    Updated: 2025/01/30 19:22:11 by david            ###   ########.fr        #
+#    Updated: 2025/01/31 12:42:20 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,18 +14,18 @@ NAME = so_long
 
 CC = cc
 
-SRCS        =   gnl/get_next_line.c \
-				gnl/get_next_line_utils.c \
-				read_map.c \
-				enemy.c \
-				error_check_2.c \
+SRCS        =   main.c \
 				error_check.c \
-				events.c \
-				main.c \
+				read_map.c \
+				error_check_2.c \
 				map.c \
 				moves.c \
-				utils.c \
-				utils_enemy.c
+				moves_cond.c \
+				utils_free.c \
+				enemy.c \
+				utils_enemy.c \
+				gnl/get_next_line.c \
+				gnl/get_next_line_utils.c
 
 CFLAGS = -Wall -Wextra -Werror -g
 

@@ -6,11 +6,49 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:55:48 by david             #+#    #+#             */
-/*   Updated: 2025/01/30 22:03:17 by david            ###   ########.fr       */
+/*   Updated: 2025/01/31 13:47:56 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	read_map_file(char *av, t_game *game)
+{
+	int		fd;
+	int		count;
+	int		i;
+	char	**map;
+
+	i = 0;
+	fd = open(av, O_RDONLY);
+	if (check_fd(fd) == 1)
+		return (1);
+	count = count_line(av);
+	map = (char **)malloc(sizeof(char *) * (count + 1));
+	if (map == NULL)
+		return (1);
+	while (1)
+	{
+		map[i] = get_next_line(fd);
+		if (map[i] == NULL)
+			break ;
+		i++;
+	}
+	close(fd);
+	game->map.data = map;
+	give_map_data(map, game);
+	return (0);
+}
+
+int	check_fd(int fd)
+{
+	if (fd == -1)
+	{
+		ft_printf("Error file\n");
+		return (1);
+	}
+	return (0);
+}
 
 int	count_line(char *av)
 {
@@ -23,8 +61,11 @@ int	count_line(char *av)
 	count = 0;
 	if (fd == -1)
 		return (1);
-	while ((line = get_next_line(fd)) != NULL)
+	while (1)
 	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
 		count++;
 		free(line);
 	}
@@ -32,24 +73,10 @@ int	count_line(char *av)
 	return (count);
 }
 
-void	print_map(char **map)
+void	give_map_data(char **map, t_game *game)
 {
 	int	y;
-
-	y = 0;
-	while (map[y] != NULL)
-	{
-		printf("%s", map[y]);
-		y++;
-	}
-	printf("\n");
-	return ;
-}
-
-void 	give_map_data(char **map, t_game *game)
-{
-	int	y;
-	int x;
+	int	x;
 
 	y = 0;
 	x = 0;

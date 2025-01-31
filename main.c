@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:58:28 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/30 21:55:38 by david            ###   ########.fr       */
+/*   Updated: 2025/01/31 13:47:57 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	main(int ac, char *av[])
 	ft_memset(&game, 0, sizeof(t_game));
 	if (check_file(av[1]) == 1)
 		return (0);
-	game.mlx_ptr = mlx_init();
 	if (read_map_file(av[1], &game) == 1)
 		return (0);
 	if (check_error(&game) == 1)
@@ -31,6 +30,7 @@ int	main(int ac, char *av[])
 		free(game.mlx_ptr);
 		return (0);
 	}
+	game.mlx_ptr = mlx_init();
 	init_img(&game);
 	creat_map(&game);
 	mlx_loop_hook(game.mlx_ptr, creat_enemies, &game);
