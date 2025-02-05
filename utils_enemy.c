@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 22:48:12 by david             #+#    #+#             */
-/*   Updated: 2025/02/03 22:20:34 by david            ###   ########.fr       */
+/*   Updated: 2025/02/05 22:15:52 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	init_enemies(t_game *game)
 				"asset/enemy.xpm", &widht, &height);
 		game->enemy[i].img_2 = mlx_xpm_file_to_image(game->mlx_ptr,
 			"asset/enemy_2.xpm", &widht, &height);
+		game->enemy[i].alive = true;
 		i++;
 	}
 	return (0);
@@ -54,7 +55,8 @@ int	kill_collision(t_game *game)
 	i = 0;
 	while (i < game->en_c)
 	{
-		if (game->player.px == game->enemy[i].x
+		if (game->enemy[i].alive == true
+			&& game->player.px == game->enemy[i].x
 			&& game->player.py == game->enemy[i].y)
 		{
 			ft_printf("You've been killed !");
@@ -75,8 +77,11 @@ void	free_enemies(t_game *game)
 		i = 0;
 		while (i < game->en_c)
 		{
-			mlx_destroy_image(game->mlx_ptr, game->enemy[i].img);
-			mlx_destroy_image(game->mlx_ptr, game->enemy[i].img_2);
+			if (game->enemy[i].alive == true)
+			{
+				mlx_destroy_image(game->mlx_ptr, game->enemy[i].img);
+				mlx_destroy_image(game->mlx_ptr, game->enemy[i].img_2);
+			}
 			i++;
 		}
 		free(game->enemy);

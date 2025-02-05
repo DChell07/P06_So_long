@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:02:19 by dchellen          #+#    #+#             */
-/*   Updated: 2025/02/05 16:05:20 by david            ###   ########.fr       */
+/*   Updated: 2025/02/05 21:54:01 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_enemy
 	int			speed_y;
 	int			new_enemy_x;
 	int			new_enemy_y;
+	bool		alive;
 }	t_enemy;
 
 typedef struct s_img
@@ -90,6 +91,14 @@ typedef struct s_count
 	void	*c_8;
 }	t_count;
 
+typedef struct s_kame
+{
+	void	*kame_1;
+	void	*kame_2;
+	void	*kame_3;
+}	t_kame;
+
+
 typedef struct s_game
 {
 	void		*mlx_ptr;
@@ -100,8 +109,10 @@ typedef struct s_game
 	t_img		img;
 	t_map		map;
 	t_player	player;
-	t_enemy		*enemy;
 	t_count		count;
+	t_kame		kame;
+	int			active;
+	t_enemy		*enemy;
 	int			en_c;
 	int			en_index;
 }	t_game;
@@ -141,6 +152,8 @@ int		move_left(t_game *game, int dx, int dy);
 int		move_down(t_game *game, int dx, int dy);
 int		move_right(t_game *game, int dx, int dy);
 
+int		kame(t_game *game);
+
 void	dash_left(t_game *game, int new_x, int new_y);
 void	dash_right(t_game *game, int new_x, int new_y);
 void	dash_up(t_game *game, int new_x, int new_y);
@@ -151,6 +164,7 @@ int		print_win(t_game *game, int new_x, int new_y);
 
 void	mlx_free(t_game *game);
 void	free_map_data(char **map_data);
+void	custom_usleep(int delay);
 
 int		init_enemies(t_game *game);
 int		put_enemies(t_game *game);
@@ -160,6 +174,7 @@ int		animate_enemy_2(t_game *game, int i);
 int		enemies_conditions_1(t_game *game, int i);
 int		enemies_conditions_2(t_game *game, int i);
 int		kill_collision(t_game *game);
+int		kill_ennemis(t_game *game, int new_x, int new_y);
 void	free_enemies(t_game *game);
 
 #endif

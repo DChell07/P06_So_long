@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:23:38 by david             #+#    #+#             */
-/*   Updated: 2025/02/03 22:36:57 by david            ###   ########.fr       */
+/*   Updated: 2025/02/05 22:20:32 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ int	creat_enemies(t_game *game)
 	i = 0;
 	while (i < game->en_c)
 	{
-		if (i % 2 == 0)
-			animate_enemy_1(game, i);
-		else
-			animate_enemy_2(game, i);
+        if (game->enemy[i].alive)
+        {
+            if (i % 2 == 0)
+                animate_enemy_1(game, i);
+            else
+                animate_enemy_2(game, i);
+        }
 		i++;
 	}
 	return (0);

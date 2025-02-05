@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:58:29 by dchellen          #+#    #+#             */
-/*   Updated: 2025/02/04 14:02:39 by david            ###   ########.fr       */
+/*   Updated: 2025/02/05 22:26:54 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	key_press_linux(int keycode, t_game *game)
 {
+	static int power = 0;
 	if (keycode == 65307)
 	{
 		ft_printf("Window closed...\n");
@@ -27,6 +28,16 @@ int	key_press_linux(int keycode, t_game *game)
 		mlx_free(game);
 	if (keycode == 100 && move_right(game, 1, 0) == 1)
 		mlx_free(game);
+	if (keycode == 106)
+	{
+		if (power < 5)
+		{
+			kame(game);
+			power++;
+		}
+		else
+			ft_printf("No KI left...\n");
+	}
 	return (0);
 }
 

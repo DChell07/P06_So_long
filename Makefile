@@ -6,7 +6,7 @@
 #    By: david <david@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 11:27:47 by david             #+#    #+#              #
-#    Updated: 2025/02/01 17:22:28 by david            ###   ########.fr        #
+#    Updated: 2025/02/05 17:25:17 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS        =   main.c \
 				enemy.c \
 				utils_enemy.c \
 				gnl/get_next_line.c \
+				kame.c \
 				gnl/get_next_line_utils.c
 
 CFLAGS = -Wall -Wextra -Werror -g
