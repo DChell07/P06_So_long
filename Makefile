@@ -6,7 +6,7 @@
 #    By: david <david@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/10 11:27:47 by david             #+#    #+#              #
-#    Updated: 2025/01/31 12:42:20 by david            ###   ########.fr        #
+#    Updated: 2025/02/01 17:22:28 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS        =   main.c \
 				map.c \
 				moves.c \
 				moves_cond.c \
+				anime_player.c \
 				utils_free.c \
 				enemy.c \
 				utils_enemy.c \

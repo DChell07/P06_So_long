@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 15:55:48 by david             #+#    #+#             */
-/*   Updated: 2025/01/31 13:51:49 by david            ###   ########.fr       */
+/*   Updated: 2025/02/02 01:20:12 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	check_fd(int fd)
 {
 	if (fd == -1)
 	{
-		ft_printf("Error file\n");
+		ft_printf("Invalid file\n");
 		return (1);
 	}
 	return (0);

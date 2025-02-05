@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:41:23 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/31 12:29:20 by david            ###   ########.fr       */
+/*   Updated: 2025/02/03 22:29:52 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,15 @@ int	print_win(t_game *game, int new_x, int new_y)
 	if (game->map.data[new_y][new_x] == 'E'
 			&& game->items_take == game->map.items_nb)
 	{
-		ft_printf("YOU WIN!\n");
+        ft_printf("\n");
+        ft_printf("__      __ _____  _____  _______  ____   _____ __     __ _ \n");
+        ft_printf("\\ \\    / /|_   _|/ ____||__   __|/ __ \\ |  __  \\ \\   / /| |\n");
+        ft_printf(" \\ \\  / /   | | | |        | |  | |  | || |__) |\\ \\_/ / | |\n");
+        ft_printf("  \\ \\/ /    | | | |        | |  | |  | ||  _  /  \\   /  | |\n");
+        ft_printf("   \\  /    _| |_| |____    | |  | |__| || | \\ \\   | |   |_|\n");
+        ft_printf("    \\/    |_____|\\_____|   |_|   \\____/ |_|  \\_\\  |_|   (_)\n");
+        ft_printf("\nTry the next lvl..?\n");
+	    ft_printf("\n");
 		return (1);
 	}
 	return (0);

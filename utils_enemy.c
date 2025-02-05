@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 22:48:12 by david             #+#    #+#             */
-/*   Updated: 2025/01/31 12:43:04 by david            ###   ########.fr       */
+/*   Updated: 2025/02/03 22:20:34 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	init_enemies(t_game *game)
 	{
 		game->enemy[i].img = mlx_xpm_file_to_image(game->mlx_ptr,
 				"asset/enemy.xpm", &widht, &height);
+		game->enemy[i].img_2 = mlx_xpm_file_to_image(game->mlx_ptr,
+			"asset/enemy_2.xpm", &widht, &height);
 		i++;
 	}
 	return (0);
@@ -55,7 +57,7 @@ int	kill_collision(t_game *game)
 		if (game->player.px == game->enemy[i].x
 			&& game->player.py == game->enemy[i].y)
 		{
-			ft_printf("Vous avez été tué !");
+			ft_printf("You've been killed !");
 			mlx_free(game);
 			return (1);
 		}
@@ -74,6 +76,7 @@ void	free_enemies(t_game *game)
 		while (i < game->en_c)
 		{
 			mlx_destroy_image(game->mlx_ptr, game->enemy[i].img);
+			mlx_destroy_image(game->mlx_ptr, game->enemy[i].img_2);
 			i++;
 		}
 		free(game->enemy);

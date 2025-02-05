@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:58:28 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/31 13:51:48 by david            ###   ########.fr       */
+/*   Updated: 2025/02/04 12:09:55 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int ac, char *av[])
 	init_img(&game);
 	creat_map(&game);
 	mlx_loop_hook(game.mlx_ptr, creat_enemies, &game);
-	mlx_key_hook(game.mlx_win, key_press_linux, &game);
+	mlx_hook(game.mlx_win, KeyPress, KeyPressMask, key_press_linux, &game);
 	mlx_hook(game.mlx_win, 17, 0, close_window, &game);
 	mlx_loop(game.mlx_ptr);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:18:36 by dchellen          #+#    #+#             */
-/*   Updated: 2025/01/31 13:32:48 by david            ###   ########.fr       */
+/*   Updated: 2025/02/03 22:37:16 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ int	check_error(t_game *game)
 		return (1);
 	}
 	game->map.width *= IMG;
-	game->map.height *= IMG;
-	ft_printf("Map Valide\n");
+	game->map.height *= IMG;	
+	begin_message();
 	return (0);
 }
 
@@ -110,4 +110,20 @@ void	flood_fill(t_game *game, char **map_copy, int x, int y)
 	flood_fill(game, map_copy, x - 1, y);
 	flood_fill(game, map_copy, x, y + 1);
 	flood_fill(game, map_copy, x, y - 1);
+}
+
+void begin_message(void)
+{
+	ft_printf("\n");
+	ft_printf("\033[38;5;214m");
+    ft_printf("██████╗ ██████╗  █████╗  ██████╗  ██████╗ ███╗   ██╗    ██████╗  █████╗ ██╗     ██╗     \n");
+    ft_printf("██╔══██╗██╔══██╗██╔══██╗██╔════╝ ██╔═══██╗████╗  ██║    ██╔══██╗██╔══██╗██║     ██║     \n");
+    ft_printf("██║  ██║██████╔╝███████║██║  ███╗██║   ██║██╔██╗ ██║    ██████╔ ███████║██║     ██║     \n");
+    ft_printf("██║  ██║██╔══██╗██╔══██║██║   ██║██║   ██║██║╚██╗██║    ██╔══██ ██╔══██║██║     ██║     \n");
+    ft_printf("██████╔╝██║  ██║██║  ██║╚██████╔╝╚██████╔╝██║ ╚████║    ██████╗╝██║  ██║███████╗███████╗\n");
+	ft_printf("\nYou need to take all of the dragon balls\n");
+	ft_printf("and go back to the kame house !\n");
+	ft_printf("move with\n- W\n- A\n- S\n- D\nAnd exit the game with ESC or the cross\n");
+    ft_printf("\n");
+	return ;
 }
