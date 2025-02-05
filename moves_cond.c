@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:41:23 by dchellen          #+#    #+#             */
-/*   Updated: 2025/02/03 22:29:52 by david            ###   ########.fr       */
+/*   Updated: 2025/02/05 15:05:55 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	conditions(t_game *game, int new_x, int new_y)
 	{
 		game->items_take++;
 		game->map.data[new_y][new_x] = '0';
+		add_count(game);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:02:19 by dchellen          #+#    #+#             */
-/*   Updated: 2025/02/04 12:49:06 by david            ###   ########.fr       */
+/*   Updated: 2025/02/05 16:05:20 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,18 @@ typedef struct s_player
 	int			py;
 }	t_player;
 
+typedef struct s_count
+{
+	void	*c_1;
+	void	*c_2;
+	void	*c_3;
+	void	*c_4;
+	void	*c_5;
+	void	*c_6;
+	void	*c_7;
+	void	*c_8;
+}	t_count;
+
 typedef struct s_game
 {
 	void		*mlx_ptr;
@@ -89,6 +101,7 @@ typedef struct s_game
 	t_map		map;
 	t_player	player;
 	t_enemy		*enemy;
+	t_count		count;
 	int			en_c;
 	int			en_index;
 }	t_game;
@@ -117,6 +130,7 @@ int		init_items(t_game *game);
 int		creat_map(t_game *game);
 void	maploop(t_game *game);
 void	maploop_cond(t_game *game);
+void	add_count(t_game *game);
 int		back_ground_img(t_game *game);
 int		dragon_ball_img(t_game *game);
 

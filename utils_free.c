@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:14:16 by dchellen          #+#    #+#             */
-/*   Updated: 2025/02/04 14:02:37 by david            ###   ########.fr       */
+/*   Updated: 2025/02/05 15:11:02 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ void	mlx_free(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->player.player_u);
 	mlx_destroy_image(game->mlx_ptr, game->player.player_d);
 	mlx_destroy_image(game->mlx_ptr, game->img.back);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_1);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_2);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_3);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_4);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_5);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_6);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_7);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_8);
 	mlx_destroy_image(game->mlx_ptr, game->img.wall);
 	mlx_destroy_image(game->mlx_ptr, game->img.exit);
 	mlx_destroy_image(game->mlx_ptr, game->img.item_1);
@@ -47,6 +55,14 @@ int	close_window(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->player.player_u);
 	mlx_destroy_image(game->mlx_ptr, game->player.player_d);
 	mlx_destroy_image(game->mlx_ptr, game->img.back);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_1);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_2);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_3);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_4);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_5);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_6);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_7);
+	mlx_destroy_image(game->mlx_ptr, game->count.c_8);
 	mlx_destroy_image(game->mlx_ptr, game->img.wall);
 	mlx_destroy_image(game->mlx_ptr, game->img.exit);
 	mlx_destroy_image(game->mlx_ptr, game->img.item_1);
