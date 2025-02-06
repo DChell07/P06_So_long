@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dchellen <dchellen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 11:18:36 by dchellen          #+#    #+#             */
-/*   Updated: 2025/02/05 22:27:40 by david            ###   ########.fr       */
+/*   Updated: 2025/02/06 11:57:43 by dchellen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	check_error(t_game *game)
 		return (1);
 	}
 	game->map.width *= IMG;
-	game->map.height *= IMG;	
+	game->map.height *= IMG;
 	begin_message();
 	return (0);
 }
@@ -112,18 +112,16 @@ void	flood_fill(t_game *game, char **map_copy, int x, int y)
 	flood_fill(game, map_copy, x, y - 1);
 }
 
-void begin_message(void)
+void	begin_message(void)
 {
 	ft_printf("\n");
 	ft_printf("\033[38;5;214m");
-    ft_printf("██████╗ ██████╗  █████╗  ██████╗  ██████╗ ███╗   ██╗    ██████╗  █████╗ ██╗     ██╗     \n");
-    ft_printf("██╔══██╗██╔══██╗██╔══██╗██╔════╝ ██╔═══██╗████╗  ██║    ██╔══██╗██╔══██╗██║     ██║     \n");
-    ft_printf("██║  ██║██████╔╝███████║██║  ███╗██║   ██║██╔██╗ ██║    ██████╔ ███████║██║     ██║     \n");
-    ft_printf("██║  ██║██╔══██╗██╔══██║██║   ██║██║   ██║██║╚██╗██║    ██╔══██ ██╔══██║██║     ██║     \n");
-    ft_printf("██████╔╝██║  ██║██║  ██║╚██████╔╝╚██████╔╝██║ ╚████║    ██████╗╝██║  ██║███████╗███████╗\n");
+	ft_printf("DRAGON BALL GAMES !!");
 	ft_printf("\nYou need to take all of the dragon balls\n");
 	ft_printf("and go back to the kame house !\n");
-	ft_printf("move with\n- W\n- A\n- S\n- D\nAnd exit the game with ESC or the cross\n");
-    ft_printf("\n");
+	ft_printf("move with\n- W\n- A\n- S\n- D\n");
+	ft_printf("You have 5 flash by lvl, use it with -J\n");
+	ft_printf("And exit the game with ESC or the cross\n");
+	ft_printf("\n");
 	return ;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dchellen <dchellen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:23:38 by david             #+#    #+#             */
-/*   Updated: 2025/02/05 22:20:32 by david            ###   ########.fr       */
+/*   Updated: 2025/02/06 11:54:42 by dchellen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	creat_enemies(t_game *game)
 	i = 0;
 	while (i < game->en_c)
 	{
-        if (game->enemy[i].alive)
-        {
-            if (i % 2 == 0)
-                animate_enemy_1(game, i);
-            else
-                animate_enemy_2(game, i);
-        }
+		if (game->enemy[i].alive)
+		{
+			if (i % 2 == 0)
+				animate_enemy_1(game, i);
+			else
+				animate_enemy_2(game, i);
+		}
 		i++;
 	}
 	return (0);
@@ -34,7 +34,7 @@ int	creat_enemies(t_game *game)
 int	animate_enemy_1(t_game *game, int i)
 {
 	static int	frame_count_1 = 0;
-	void *temp_img;
+	void		*temp_img;
 
 	game->enemy[i].max_y = 100;
 	game->enemy[i].min_y = 0;
@@ -48,7 +48,7 @@ int	animate_enemy_1(t_game *game, int i)
 			game->enemy[i].speed_y *= -1;
 			temp_img = game->enemy[i].img;
 			game->enemy[i].img = game->enemy[i].img_2;
-			game->enemy[i].img_2 = temp_img; 
+			game->enemy[i].img_2 = temp_img;
 		}
 		else
 		{
@@ -68,7 +68,7 @@ int	animate_enemy_1(t_game *game, int i)
 int	animate_enemy_2(t_game *game, int i)
 {
 	static int	frame_count_2 = 0;
-	void *temp_img;
+	void		*temp_img;
 
 	game->enemy[i].max_x = 100;
 	game->enemy[i].min_x = 0;
@@ -82,7 +82,7 @@ int	animate_enemy_2(t_game *game, int i)
 			game->enemy[i].speed_x *= -1;
 			temp_img = game->enemy[i].img;
 			game->enemy[i].img = game->enemy[i].img_2;
-			game->enemy[i].img_2 = temp_img; 
+			game->enemy[i].img_2 = temp_img;
 		}
 		else
 		{
