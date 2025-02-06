@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:14:16 by dchellen          #+#    #+#             */
-/*   Updated: 2025/02/05 21:59:02 by david            ###   ########.fr       */
+/*   Updated: 2025/02/06 00:31:25 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	mlx_free(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->img.item_7);
 	mlx_destroy_image(game->mlx_ptr, game->kame.kame_1);
 	mlx_destroy_image(game->mlx_ptr, game->kame.kame_2);
+	mlx_destroy_image(game->mlx_ptr, game->kame.kame_3);
 	mlx_destroy_window(game->mlx_ptr, game->mlx_win);
 	free_enemies(game);
 	mlx_destroy_display(game->mlx_ptr);
@@ -76,6 +77,7 @@ int	close_window(t_game *game)
 	mlx_destroy_image(game->mlx_ptr, game->img.item_7);
 	mlx_destroy_image(game->mlx_ptr, game->kame.kame_1);
 	mlx_destroy_image(game->mlx_ptr, game->kame.kame_2);
+	mlx_destroy_image(game->mlx_ptr, game->kame.kame_3);
 	mlx_destroy_window(game->mlx_ptr, game->mlx_win);
 	free_enemies(game);
 	mlx_destroy_display(game->mlx_ptr);

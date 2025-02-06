@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 17:24:54 by david             #+#    #+#             */
-/*   Updated: 2025/02/05 22:21:38 by david            ###   ########.fr       */
+/*   Updated: 2025/02/06 01:05:35 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int kame(t_game *game)
 	       game->map.data[new_y][new_x] != 'E' &&
 	       game->map.data[new_y][new_x] != 'C')
 	{
-        kill_ennemis(game, new_x, new_y);
+ 		if (kill_ennemis(game, new_x, new_y))
+            break;
 		mlx_put_image_to_window(game->mlx_ptr, game->mlx_win,
 			game->img.back, prev_x * IMG, game->player.py * IMG);
 		mlx_put_image_to_window(game->mlx_ptr, game->mlx_win,
@@ -62,7 +63,14 @@ int kill_ennemis(t_game *game, int new_x, int new_y)
             game->enemy[i].img = game->img.back;
             game->enemy[i].img_2 = game->img.back;
             game->map.data[game->enemy[i].y][game->enemy[i].x] = '0';
+			mlx_put_image_to_window(game->mlx_ptr, game->mlx_win,
+				game->kame.kame_3, game->enemy[i].x * IMG, game->enemy[i].y * IMG);
             printf("ONE KILL !\n");
+			mlx_do_sync(game->mlx_ptr);
+			usleep(200000);
+			mlx_put_image_to_window(game->mlx_ptr, game->mlx_win,
+				game->img.back, game->enemy[i].x * IMG, game->enemy[i].y * IMG);
+			return (1);
         }
     	i++;
     }

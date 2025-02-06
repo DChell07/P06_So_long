@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:14:16 by dchellen          #+#    #+#             */
-/*   Updated: 2025/02/05 22:13:09 by david            ###   ########.fr       */
+/*   Updated: 2025/02/06 00:04:10 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,11 @@ int	init_img(t_game *game)
 	game->img.exit = mlx_xpm_file_to_image(game->mlx_ptr,
 			"asset/exit.xpm", &widht, &height);
 	game->kame.kame_1 = mlx_xpm_file_to_image(game->mlx_ptr,
-			"asset/1.xpm", &widht, &height);
+			"asset/kame_1.xpm", &widht, &height);
 	game->kame.kame_2 = mlx_xpm_file_to_image(game->mlx_ptr,
-			"asset/2.xpm", &widht, &height);
+			"asset/kame_2.xpm", &widht, &height);
+	game->kame.kame_3 = mlx_xpm_file_to_image(game->mlx_ptr,
+			"asset/kame_3.xpm", &widht, &height);
 	game->map.items_nb = 0;
 	init_items(game);
 	init_enemies(game);
