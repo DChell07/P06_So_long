@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   kame.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dchellen <dchellen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 17:24:54 by david             #+#    #+#             */
-/*   Updated: 2025/02/06 15:24:08 by dchellen         ###   ########.fr       */
+/*   Updated: 2025/02/08 20:41:43 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	kame(t_game *game)
 		game->kame.kame_1, game->player.px * IMG, game->player.py * IMG);
 	while (game->map.data[new_y][new_x] != '1' &&
 			game->map.data[new_y][new_x] != 'E' &&
-		   game->map.data[new_y][new_x] != 'C')
+			game->map.data[new_y][new_x] != 'C')
 	{
- 		if (kill_ennemis(game, new_x, new_y) == 1)
+		if (kill_ennemis(game, new_x, new_y) == 1)
 			return (0);
 		mlx_put_image_to_window(game->mlx_ptr, game->mlx_win,
 			game->img.back, prev_x * IMG, game->player.py * IMG);
@@ -57,9 +57,14 @@ int	kill_ennemis(t_game *game, int new_x, int new_y)
 	i = 0;
 	while (i < game->en_c)
 	{
-		if (game->enemy[i].y == new_y && game->enemy[i].x == new_x &&
-			game->enemy[i].img != game->img.back && game->enemy[i].img_2 != game->img.back)
+		if (game->enemy[i].y == new_y && game->enemy[i].x == new_x
+			&& game->enemy[i].img != game->img.back
+			&& game->enemy[i].img_2 != game->img.back)
 		{
+			if (game->enemy[i].img != NULL)
+				mlx_destroy_image(game->mlx_ptr, game->enemy[i].img);
+			if (game->enemy[i].img_2 != NULL)
+				mlx_destroy_image(game->mlx_ptr, game->enemy[i].img_2);
 			game->enemy[i].alive = false;
 			game->enemy[i].img = game->img.back;
 			game->enemy[i].img_2 = game->img.back;

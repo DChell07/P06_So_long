@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_enemy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dchellen <dchellen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 22:48:12 by david             #+#    #+#             */
-/*   Updated: 2025/02/06 11:29:46 by dchellen         ###   ########.fr       */
+/*   Updated: 2025/02/08 20:41:27 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	init_enemies(t_game *game)
 		game->enemy[i].img = mlx_xpm_file_to_image(game->mlx_ptr,
 				"asset/enemy.xpm", &widht, &height);
 		game->enemy[i].img_2 = mlx_xpm_file_to_image(game->mlx_ptr,
-			"asset/enemy_2.xpm", &widht, &height);
+				"asset/enemy_2.xpm", &widht, &height);
 		game->enemy[i].alive = true;
 		i++;
 	}

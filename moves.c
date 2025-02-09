@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 14:58:29 by dchellen          #+#    #+#             */
-/*   Updated: 2025/02/06 00:00:17 by david            ###   ########.fr       */
+/*   Updated: 2025/02/08 20:19:14 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	key_press_linux(int keycode, t_game *game)
 {
-	static int power = 0;
+	static int	power = 0;
+
 	if (keycode == 65307)
 	{
 		ft_printf("Window closed...\n");

@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:14:16 by dchellen          #+#    #+#             */
-/*   Updated: 2025/02/06 00:04:10 by david            ###   ########.fr       */
+/*   Updated: 2025/02/08 19:45:53 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,12 +140,12 @@ void	maploop_cond(t_game *game)
 	return ;
 }
 
-void add_count(t_game *game)
+void	add_count(t_game *game)
 {
-	game->map.y = 0;
-	game->map.x = 0;
 	size_t	size;
 
+	game->map.y = 0;
+	game->map.x = 0;
 	size = ft_strlen(game->map.data[game->map.x]);
 	if (game->map.data[game->map.x][size - 1] == '\n')
 		size--;
