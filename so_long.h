@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 14:02:19 by dchellen          #+#    #+#             */
-/*   Updated: 2025/02/08 18:28:50 by david            ###   ########.fr       */
+/*   Updated: 2025/02/16 14:08:21 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ typedef struct s_game
 	t_enemy		*enemy;
 	int			en_c;
 	int			en_index;
+	// int			pos;
 }	t_game;
 
 int		error_arg(int arg);
@@ -151,6 +152,8 @@ int		move_up(t_game *game, int px, int py);
 int		move_left(t_game *game, int dx, int dy);
 int		move_down(t_game *game, int dx, int dy);
 int		move_right(t_game *game, int dx, int dy);
+// int		change_pos(t_game *game, int dx, int dy);
+// int		change_pos_2(t_game *game, int dx, int dy);
 
 int		kame(t_game *game);
 
